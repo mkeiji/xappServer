@@ -15,6 +15,13 @@ The easiest way to have the lombok plugin is via one of these IDE/editors:
 1. [IntelliJ](https://www.jetbrains.com/idea/) (there is a community version that is FREE) 
 2. [VScode](https://code.visualstudio.com/) (its free)
 
+### Preparation
+Before running the server, you MUST create and start the database server.
+For development use the following:
+* database=xapptestdb
+* username=root
+* password=root
+
 ### To run
 * windows
 ``` bash
