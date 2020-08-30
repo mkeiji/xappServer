@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 @RestController
 @RequestMapping("/users")
@@ -27,6 +28,7 @@ public class UserController {
     UserService service;
 
     @GetMapping
+    @CrossOrigin(origins = {Environment.DEV_URL, Environment.PROD_URL})
     public ResponseEntity<List<UserEntity>> getAllUsers() {
         List<UserEntity> list = service.getAllUsers();
         return new ResponseEntity<List<UserEntity>>(
@@ -37,6 +39,7 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
+    @CrossOrigin(origins = {Environment.DEV_URL, Environment.PROD_URL})
     public ResponseEntity<UserEntity> getUserById(@PathVariable("id") Long id) {
         return new ResponseEntity<UserEntity>(
             service.getUser(id),
@@ -46,6 +49,7 @@ public class UserController {
     }
 
     @PostMapping
+    @CrossOrigin(origins = {Environment.DEV_URL, Environment.PROD_URL})
     public ResponseEntity<UserEntity> createUser(@Valid @RequestBody UserEntity newUser) {
         return new ResponseEntity<UserEntity>(
             service.createUser(newUser),
@@ -55,6 +59,7 @@ public class UserController {
     }
 
     @PutMapping
+    @CrossOrigin(origins = {Environment.DEV_URL, Environment.PROD_URL})
     public ResponseEntity<UserEntity> updateUser(@Valid @RequestBody UserEntity user) {
         return new ResponseEntity<UserEntity>(
             service.updateUser(user),
@@ -64,6 +69,7 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}")
+    @CrossOrigin(origins = {Environment.DEV_URL, Environment.PROD_URL})
     public HttpStatus deleteUserById(@PathVariable("id") Long userID) throws Exception {
         try {
             service.deleteUser(userID);
